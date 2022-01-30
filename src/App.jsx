@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+// import { Route, Switch, Redirect } from 'react-router-dom';
 import Contacts from './views/Contacts';
 import Login from './views/Login';
 import Register from './views/Register';
@@ -9,6 +9,7 @@ export default function App() {
     <div className="App">
       <Contacts />
       <Login />
+      <Register />
       {/* <Switch>
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
