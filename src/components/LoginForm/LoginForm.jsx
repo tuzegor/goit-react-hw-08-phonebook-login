@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import style from './LoginForm.mpdule.css';
+import style from './LoginForm.module.css';
 
 export default function LoginForm() {
   const [email, setEmail] = useState('');
@@ -15,12 +15,12 @@ export default function LoginForm() {
   };
 
   return (
-    <form className={style.contactForm} onSubmit={formSubmit}>
+    <form className={style.loginForm} onSubmit={formSubmit}>
       <div className={style.inputWrapper}>
-        <label className={style.nameTitle}>
+        <label className={style.emailTitle}>
           <span>Email</span>
           <input
-            className={style.nameField}
+            className={style.emailField}
             type="email"
             name="email"
             value={email}
@@ -30,10 +30,10 @@ export default function LoginForm() {
         </label>
       </div>
       <div className={style.inputWrapper}>
-        <label className={style.numberTitle}>
+        <label className={style.passwordTitle}>
           <span>Password</span>
           <input
-            className={style.numberField}
+            className={style.passwordField}
             type="password"
             name="password"
             value={password}
