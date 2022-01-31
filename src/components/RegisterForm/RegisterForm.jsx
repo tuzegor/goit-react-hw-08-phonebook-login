@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import style from './RegisterForm.module.css';
+import { fetchSignUp } from '../../store/user/userApi';
 
 export default function RegisterForm() {
   const [name, setName] = useState('');
@@ -10,6 +11,9 @@ export default function RegisterForm() {
     event.preventDefault();
     const user = { name, email, password };
     console.log(user);
+    fetchSignUp(user).then(data => {
+      console.log(data);
+    });
 
     setName('');
     setEmail('');

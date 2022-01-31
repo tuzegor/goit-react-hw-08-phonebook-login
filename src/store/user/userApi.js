@@ -7,8 +7,8 @@ async function baseFetch(url = '', config = {}) {
     : Promise.reject(new Error('Problem'));
 }
 
-export function fetchSingUp(userData) {
-  return baseFetch(`${BASE_URL_FOR_USERS}/singup`, {
+export function fetchSignUp(userData) {
+  return baseFetch(`${BASE_URL_FOR_USERS}/signup`, {
     method: 'POST',
     body: JSON.stringify(userData),
     headers: {
