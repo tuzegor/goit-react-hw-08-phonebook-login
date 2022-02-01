@@ -1,19 +1,20 @@
 import { useState } from 'react';
 import style from './RegisterForm.module.css';
-import { fetchSignUp } from '../../store/user/userApi';
+import { register } from '../../store/auth/auth-operations';
+import { useDispatch } from 'react-redux';
 
 export default function RegisterForm() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const dispatch = useDispatch();
+
   const formSubmit = event => {
     event.preventDefault();
     const user = { name, email, password };
     console.log(user);
-    fetchSignUp(user).then(data => {
-      console.log(data);
-    });
+    dispatch(register(user));
 
     setName('');
     setEmail('');

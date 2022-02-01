@@ -22,6 +22,9 @@ export const contactsApi = createApi({
       query: contact => ({
         url: `/contacts`,
         method: 'POST',
+        // headers: {
+        //   Authorization: `Bearer ${token}`,
+        // },
         body: contact,
       }),
 
