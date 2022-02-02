@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './Filter.module.css';
-import { changeFilter } from '../../store/contacts/filter-slice';
+import { changeFilter } from '../../store/contacts/filterSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function Filter() {
