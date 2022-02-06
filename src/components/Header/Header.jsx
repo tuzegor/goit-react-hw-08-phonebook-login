@@ -21,15 +21,15 @@ export default function Header() {
             <NavLink
               to="/login"
               exact
-              className={styles.loginLink}
-              activeClassName={styles.activeLink}
+              className={`Btn ${styles.Btn}`}
+              activeClassName="activeBtn"
             >
               Login
             </NavLink>
             <NavLink
               to="/register"
-              className={styles.registerLink}
-              activeClassName={styles.activeLink}
+              className={`Btn ${styles.Btn}`}
+              activeClassName="activeBtn"
             >
               Register
             </NavLink>
@@ -41,8 +41,7 @@ export default function Header() {
             <NavLink
               onClick={() => dispatch(logout(token))}
               to="/login"
-              className={styles.contactsLink}
-              activeClassName={styles.activeLink}
+              className={`Btn ${styles.Btn}`}
             >
               Logout
             </NavLink>

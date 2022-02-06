@@ -62,7 +62,7 @@ export default function RegisterForm() {
           />
         </label>
       </div>
-      <button className={style.submitBtn} type="submit">
+      <button className={`Btn ${style.registerBtn}`} type="submit">
         Registration
       </button>
     </form>
