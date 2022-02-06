@@ -18,7 +18,7 @@ export default function Contacts() {
     if (isLoggedIn) {
       dispatch(getContacts(token));
     }
-  }, [dispatch, isLoggedIn, token]);
+  }, [dispatch, token]);
 
   return (
     <>
