@@ -36,3 +36,13 @@ export function fetchLogout(jwtToken) {
     },
   });
 }
+
+export function fetchCurrentUser(jwtToken) {
+  return baseFetch(`${BASE_URL_FOR_USERS}/current`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${jwtToken}`,
+      'Content-Type': 'application/json',
+    },
+  });
+}

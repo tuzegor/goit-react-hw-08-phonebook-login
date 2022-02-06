@@ -1,15 +1,26 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Login from './views/Login';
 import Header from './components/Header/Header';
 import Register from './views/Register';
 import Contacts from './views/Contacts';
-import { authSelectors } from './store/auth/authSelectors';
+import { authSelectors, getToken } from './store/auth/authSelectors';
+import { useDispatch } from 'react-redux';
+import { currentUser } from './store/auth/authOperations';
 
 export default function App() {
+  const dispatch = useDispatch();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const token = useSelector(getToken);
   console.log('isLoggedIn: ', isLoggedIn);
+  console.log(token);
+  useEffect(() => {
+    if (token) {
+      dispatch(currentUser(token));
+    }
+  }, []);
+
   return (
     <div className="App">
       <Header></Header>
