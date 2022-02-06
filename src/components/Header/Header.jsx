@@ -8,11 +8,11 @@ import { logout } from '../../store/auth/authOperations';
 
 export default function Header() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const userName = useSelector(authSelectors.getUserName);
   const token = useSelector(getToken);
+
   const dispatch = useDispatch();
 
-  // console.log(token);
-  // console.log(isLoggedIn);
   return (
     <section className={styles.header}>
       <div className="container">
@@ -37,6 +37,7 @@ export default function Header() {
         )}
         {isLoggedIn && (
           <>
+            <span>Hello {userName} </span>
             <NavLink
               onClick={() => dispatch(logout(token))}
               to="/login"
