@@ -2,11 +2,17 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.css';
-import authSelectors from '../../store/auth/authSelectors';
+import { useDispatch } from 'react-redux';
+import { authSelectors, getToken } from '../../store/auth/authSelectors';
+import { logout } from '../../store/auth/authOperations';
 
 export default function Header() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  console.log(isLoggedIn);
+  const token = useSelector(getToken);
+  const dispatch = useDispatch();
+
+  // console.log(token);
+  // console.log(isLoggedIn);
   return (
     <section className={styles.header}>
       <div className="container">
@@ -33,7 +39,7 @@ export default function Header() {
           Contacts
         </NavLink>
         <NavLink
-          // onClick={}
+          onClick={() => dispatch(logout(token))}
           to="/login"
           className={styles.contactsLink}
           activeClassName={styles.activeLink}

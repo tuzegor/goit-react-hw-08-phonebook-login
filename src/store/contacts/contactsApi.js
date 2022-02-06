@@ -1,40 +1,38 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+const BASE_URL_FOR_USERS = 'https://connections-api.herokuapp.com';
+async function baseFetch(url = '', config = {}) {
+  const response = await fetch(url, config);
+  return response.ok
+    ? await response.json()
+    : Promise.reject(new Error('Problem'));
+}
 
-export const contactsApi = createApi({
-  reducerPath: 'contactsApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'https://connections-api.herokuapp.com',
-  }),
-  tagTypes: ['Contact'],
-  endpoints: builder => ({
-    fetchContacts: builder.query({
-      query: () => `/contacts`,
-      providesTags: ['Contact'],
-    }),
-    deleteContact: builder.mutation({
-      query: contactId => ({
-        url: `/contacts/{${contactId}}`,
-        method: 'DELETE',
-      }),
-      invalidatesTags: ['Contact'],
-    }),
-    updateContacts: builder.mutation({
-      query: contact => ({
-        url: `/contacts`,
-        method: 'POST',
-        // headers: {
-        //   Authorization: `Bearer ${token}`,
-        // },
-        body: contact,
-      }),
+export function fetchGetContacts(jwtToken) {
+  return baseFetch(`${BASE_URL_FOR_USERS}/contacts`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${jwtToken}`,
+      'Content-Type': 'application/json',
+    },
+  });
+}
 
-      invalidatesTags: ['Contact'],
-    }),
-  }),
-});
+export function fetchAddContacts(contact, jwtToken) {
+  return baseFetch(`${BASE_URL_FOR_USERS}/contacts`, {
+    method: 'POST',
+    body: JSON.stringify(contact),
+    headers: {
+      Authorization: `Bearer ${jwtToken}`,
+      'Content-Type': 'application/json',
+    },
+  });
+}
 
-export const {
-  useFetchContactsQuery,
-  useDeleteContactMutation,
-  useUpdateContactsMutation,
-} = contactsApi;
+export function fetchDeleteContact(jwtToken, contactId) {
+  return baseFetch(`${BASE_URL_FOR_USERS}/contacts/${contactId}`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${jwtToken}`,
+      'Content-Type': 'application/json',
+    },
+  });
+}

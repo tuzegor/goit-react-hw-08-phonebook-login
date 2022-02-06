@@ -27,16 +27,12 @@ export function fetchLogin(userData) {
   });
 }
 
-export function fetchLogout(userData, jwtToken) {
-  return baseFetch(`${BASE_URL_FOR_USERS}/login`, {
+export function fetchLogout(jwtToken) {
+  return baseFetch(`${BASE_URL_FOR_USERS}/logout`, {
     method: 'POST',
-    body: JSON.stringify(userData),
     headers: {
+      Authorization: `Bearer ${jwtToken}`,
       'Content-Type': 'application/json',
     },
   });
-}
-
-export function fetchCurrentUser(jwtToken) {
-  return baseFetch(`${BASE_URL_FOR_USERS}/current`);
 }

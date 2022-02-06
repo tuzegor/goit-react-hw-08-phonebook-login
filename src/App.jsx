@@ -5,11 +5,11 @@ import Login from './views/Login';
 import Header from './components/Header/Header';
 import Register from './views/Register';
 import Contacts from './views/Contacts';
-import authSelectors from './store/auth/authSelectors';
+import { authSelectors } from './store/auth/authSelectors';
 
 export default function App() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-
+  console.log('isLoggedIn: ', isLoggedIn);
   return (
     <div className="App">
       <Header></Header>
@@ -17,7 +17,9 @@ export default function App() {
       <Switch>
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
-        <Route exact path="/contacts" component={Contacts} />
+        <Route exact path="/contacts">
+          {isLoggedIn ? <Contacts /> : <Redirect to="/login" />}
+        </Route>
 
         <Redirect to="/login" />
       </Switch>

@@ -1,18 +1,26 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import style from './ContactForm.module.css';
-import { useUpdateContactsMutation } from '../../store/contacts/contactsApi';
-import Loader from '../Loader/Loader';
+// import { useUpdateContactsMutation } from '../../store/contacts/contactsApi';
+// import Loader from '../Loader/Loader';
+import { getToken } from '../../store/auth/authSelectors';
+import { addContacts } from '../../store/contacts/contactsOperations.js';
+import { useDispatch } from 'react-redux';
+
 export default function ContactForm({ contacts }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const token = useSelector(getToken);
+  const dispatch = useDispatch();
+  // console.log(token);
 
-  const [updateContacts, { isLoading: isUpdating }] =
-    useUpdateContactsMutation();
+  // const [updateContacts, { isLoading: isUpdating }] =
+  //   useUpdateContactsMutation();
 
   const formSubmit = event => {
     event.preventDefault();
-    const contact = { name, phone: number };
+    const contact = { name, number };
 
     if (
       contacts.find(
@@ -22,7 +30,8 @@ export default function ContactForm({ contacts }) {
     ) {
       alert('Such contact exists');
     } else {
-      updateContacts(contact);
+      console.log(JSON.stringify(contact), contact, token);
+      dispatch(addContacts({ contact, token }));
     }
 
     setName('');
@@ -61,13 +70,18 @@ export default function ContactForm({ contacts }) {
           />
         </label>
       </div>
-      <button className={style.submitBtn} type="submit" disabled={isUpdating}>
-        {isUpdating ? <Loader /> : 'Add contact'}
+      <button
+        className={style.submitBtn}
+        type="submit"
+        // disabled={isUpdating}
+      >
+        add
+        {/* {isUpdating ? <Loader /> : 'Add contact'} */}
       </button>
     </form>
   );
 }
 
-ContactForm.propTypes = {
-  contacts: PropTypes.array,
-};
+// ContactForm.propTypes = {
+//   contacts: PropTypes.array,
+// };
