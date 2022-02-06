@@ -11,7 +11,7 @@ export default function LoginForm() {
   const formSubmit = event => {
     event.preventDefault();
     const user = { email, password };
-    console.log(user);
+
     dispatch(login(user));
 
     setEmail('');

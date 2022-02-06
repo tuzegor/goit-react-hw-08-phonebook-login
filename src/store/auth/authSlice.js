@@ -27,7 +27,6 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
     },
     [currentUser.fulfilled](state, action) {
-      console.log(action.payload);
       state.user = action.payload;
 
       state.isLoggedIn = true;
@@ -35,5 +34,4 @@ const authSlice = createSlice({
   },
 });
 
-// export const { registerFull } = authSlice.actions;
 export const authReducer = authSlice.reducer;

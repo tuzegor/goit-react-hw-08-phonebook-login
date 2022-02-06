@@ -13,13 +13,13 @@ export default function RegisterForm() {
   const formSubmit = event => {
     event.preventDefault();
     const user = { name, email, password };
-    console.log(user);
     dispatch(register(user));
 
     setName('');
     setEmail('');
     setPassword('');
   };
+
   return (
     <form className={style.registrationForm} onSubmit={formSubmit}>
       <div className={style.inputWrapper}>

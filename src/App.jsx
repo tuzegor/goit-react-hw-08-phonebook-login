@@ -13,8 +13,7 @@ export default function App() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const token = useSelector(getToken);
-  console.log('isLoggedIn: ', isLoggedIn);
-  console.log(token);
+
   useEffect(() => {
     if (token) {
       dispatch(currentUser(token));
@@ -29,7 +28,9 @@ export default function App() {
         <Route exact path="/login">
           {isLoggedIn ? <Redirect to="/contacts" /> : <Login />}
         </Route>
-        <Route exact path="/register" component={Register} />
+        <Route exact path="/register">
+          {isLoggedIn ? <Redirect to="/contacts" /> : <Register />}
+        </Route>
         <Route exact path="/contacts">
           {!isLoggedIn ? <Redirect to="/login" /> : <Contacts />}
         </Route>

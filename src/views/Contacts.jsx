@@ -15,7 +15,7 @@ export default function Contacts() {
   const contacts = useSelector(getContactsFromStore);
 
   useEffect(() => {
-    if (isLoggedIn) {
+    if (isLoggedIn && token) {
       dispatch(getContacts(token));
     }
   }, [dispatch, token]);
