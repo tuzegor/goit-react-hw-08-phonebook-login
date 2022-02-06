@@ -15,14 +15,17 @@ export default function App() {
       <Header></Header>
 
       <Switch>
-        <Route exact path="/login" component={Login} />
+        <Route exact path="/login">
+          {isLoggedIn ? <Redirect to="/contacts" /> : <Login />}
+        </Route>
         <Route exact path="/register" component={Register} />
         <Route exact path="/contacts">
-          {isLoggedIn ? <Contacts /> : <Redirect to="/login" />}
+          {!isLoggedIn ? <Redirect to="/login" /> : <Contacts />}
         </Route>
 
         <Redirect to="/login" />
       </Switch>
+      {/* {isLoggedIn ? <Redirect to="/contacts" /> : <Redirect to="/login" />} */}
     </div>
   );
 }
