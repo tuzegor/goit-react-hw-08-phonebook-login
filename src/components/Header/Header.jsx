@@ -37,7 +37,7 @@ export default function Header() {
         )}
         {isLoggedIn && (
           <>
-            <span>Hello {userName} </span>
+            <span>Hello, {userName} </span>
             <NavLink
               onClick={() => dispatch(logout(token))}
               to="/login"
