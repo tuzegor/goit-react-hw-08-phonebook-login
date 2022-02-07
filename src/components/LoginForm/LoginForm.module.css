@@ -1,6 +1,19 @@
 .loginForm {
   margin-top: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
+
 .inputWrapper {
   margin-bottom: 20px;
+}
+
+.loginForm label {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

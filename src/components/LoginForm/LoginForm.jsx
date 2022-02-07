@@ -22,7 +22,7 @@ export default function LoginForm() {
     <form className={style.loginForm} onSubmit={formSubmit}>
       <div className={style.inputWrapper}>
         <label className={style.emailTitle}>
-          <span>Email</span>
+          <span>Email </span>
           <input
             className={style.emailField}
             type="email"
@@ -35,7 +35,7 @@ export default function LoginForm() {
       </div>
       <div className={style.inputWrapper}>
         <label className={style.passwordTitle}>
-          <span>Password</span>
+          <span>Password </span>
           <input
             className={style.passwordField}
             type="password"

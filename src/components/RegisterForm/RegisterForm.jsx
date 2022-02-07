@@ -24,7 +24,7 @@ export default function RegisterForm() {
     <form className={style.registrationForm} onSubmit={formSubmit}>
       <div className={style.inputWrapper}>
         <label className={style.nameTitle}>
-          <span>Name</span>
+          <span>Name </span>
           <input
             className={style.nameField}
             type="text"
@@ -38,7 +38,7 @@ export default function RegisterForm() {
 
       <div className={style.inputWrapper}>
         <label className={style.emailTitle}>
-          <span>Email</span>
+          <span>Email </span>
           <input
             className={style.emailField}
             type="email"
@@ -51,7 +51,7 @@ export default function RegisterForm() {
       </div>
       <div className={style.inputWrapper}>
         <label className={style.passwordTitle}>
-          <span>Password</span>
+          <span>Password </span>
           <input
             className={style.passwordField}
             type="password"
