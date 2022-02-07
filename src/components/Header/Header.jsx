@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styles from './Header.module.css';
 import { useDispatch } from 'react-redux';
 import { authSelectors, getToken } from '../../store/auth/authSelectors';

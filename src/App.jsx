@@ -18,7 +18,7 @@ export default function App() {
     if (token) {
       dispatch(currentUser(token));
     }
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">

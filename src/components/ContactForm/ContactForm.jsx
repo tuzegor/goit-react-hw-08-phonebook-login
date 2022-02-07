@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import style from './ContactForm.module.css';
-// import { useUpdateContactsMutation } from '../../store/contacts/contactsApi';
-// import Loader from '../Loader/Loader';
 import { getToken } from '../../store/auth/authSelectors';
 import { addContacts } from '../../store/contacts/contactsOperations.js';
 import { useDispatch } from 'react-redux';
@@ -13,10 +11,6 @@ export default function ContactForm({ contacts }) {
   const [number, setNumber] = useState('');
   const token = useSelector(getToken);
   const dispatch = useDispatch();
-  // console.log(token);
-
-  // const [updateContacts, { isLoading: isUpdating }] =
-  //   useUpdateContactsMutation();
 
   const formSubmit = event => {
     event.preventDefault();
@@ -30,7 +24,6 @@ export default function ContactForm({ contacts }) {
     ) {
       alert('Such contact exists');
     } else {
-      console.log(JSON.stringify(contact), contact, token);
       dispatch(addContacts({ contact, token }));
     }
 
@@ -75,13 +68,13 @@ export default function ContactForm({ contacts }) {
         type="submit"
         // disabled={isUpdating}
       >
-        add
+        Add
         {/* {isUpdating ? <Loader /> : 'Add contact'} */}
       </button>
     </form>
   );
 }
 
-// ContactForm.propTypes = {
-//   contacts: PropTypes.array,
-// };
+ContactForm.propTypes = {
+  contacts: PropTypes.array,
+};

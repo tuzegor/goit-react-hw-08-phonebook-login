@@ -16,10 +16,18 @@ const authSlice = createSlice({
       state.token = action.payload.token;
       state.isLoggedIn = true;
     },
+    [register.rejected](state, action) {
+      state.error = action.error.name;
+      alert('Problem with registration');
+    },
     [login.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
+    },
+    [login.rejected](state, action) {
+      state.error = action.error.name;
+      alert('User not found');
     },
     [logout.fulfilled](state, action) {
       state.user = { name: null, email: null };
